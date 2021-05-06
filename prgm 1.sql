@@ -1,0 +1,17 @@
+CREATE DATABASE list;
+use list;
+CREATE table employee(emp_no INT NOT NULL,emp_name VARCHAR(20) NOT NULL,DOB date NOT NULL, address varchar(50) NOT NULL,doj date NOT NULL,mobile_no varchar(100),dept_no varchar(20),salary INT NOT NULL,PRIMARY KEY(emp_no),FOREIGN KEY (dept_no) REFERENCES department(dept_no));
+CREATE table department(dept_no VARCHAR(20),dept_name VARCHAR(50),location VARCHAR(100),PRIMARY KEY(dept_no));
+insert into department values(101,"MTECH","Mumbai");
+insert into department values(102,"MCA","Kannur");
+insert into department values(103,"BTECH","Kochi");
+select * from department;
+insert into employee values(1,"Sarangi",'1996-04-20',"Sarangi villa",'2020-01-10',9785439910,101,10000);
+insert into employee values(2,"Nandana",'2000-05-23',"Nandanam house",'2020-02-11',7012349019,102,8000);
+insert into employee values(3,"Parvathy",'1995-06-29',"Kavila house",'2021-01-14',9912120010,103,10000);
+select * from employee;
+show tables;
+alter table employee add column designation varchar(20);
+alter table department drop column location;
+drop table department,employee;
+drop database Organization;
