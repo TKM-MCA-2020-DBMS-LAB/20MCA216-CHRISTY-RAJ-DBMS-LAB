@@ -1,0 +1,22 @@
+CREATE DATABASE list;
+use list;
+CREATE table employee(emp_no INT NOT NULL,emp_name VARCHAR(20) NOT NULL,DOB date NOT NULL, address varchar(50) NOT NULL,doj date NOT NULL,mobile_no varchar(100),dept_no varchar(20),salary INT NOT NULL,PRIMARY KEY(emp_no),FOREIGN KEY (dept_no) REFERENCES department(dept_no));
+CREATE table department(dept_no VARCHAR(20),dept_name VARCHAR(50),location VARCHAR(100),PRIMARY KEY(dept_no));
+insert into department values(101,"MTECH","1stfloor");
+insert into department values(102,"MCA","2ndfloor");
+insert into department values(103,"BTECH","3rdfloor");
+
+insert into employee values(1,"Sarangi",'1996-04-20',"Sarangi villa",'2020-01-10',9785439910,101,100000);
+insert into employee values(2,"Nandana",'2000-05-23',"Nandanam house",'2020-02-11',7012349019,102,80000);
+insert into employee values(3,"Parvathy",'1995-06-29',"Kavila house",'2021-01-14',9912120010,103,20000);
+select * from employee;
+select * from department;
+select emp_no,emp_name from employee where dept_no =102;
+ select emp_no,emp_name,dept_no,salary,address from employee order by salary desc;
+ select emp_no,emp_name from employee where salary between 34000 and 45000;
+select distinct address from employee;
+select dept_no,sum(salary) from employee group by dept_no;
+update employee set salary=25000 where (address="Sarangi villa" and emp_no<>0);
+update employee set mobile_no=956345412 where (emp_name="Nandana" and emp_no <>0);
+delete from employee where (salary =25000 and emp_no<>0);
+ select dept_no,sum(salary) from employee group by dept_no having sum(salary)>25000;
